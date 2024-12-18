@@ -1,0 +1,406 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+:root {
+    --primary-bg: black;
+    --secondary-bg:#1B1B1B;
+   --primary-text: gold;
+   --secondary-text: whitesmoke;
+   
+}
+
+body{
+    background-color: var(--primary-bg);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.fnav{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    background-color: var(--primary-bg);
+    color: var(--secondary-text);
+    height: 80%;
+    padding: 5px;
+}
+
+.fnav .left{
+    display: flex;
+    margin-top: 5px;
+}
+
+.left img{
+    width: 18%;
+    height: 90%;
+} 
+
+.left input{
+    margin-inline: 57px;
+    width: 320px;
+    height: 33px;
+    border: none;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 40px;
+    border-radius: 2px;
+}
+
+.fnav .right{
+    display: flex;
+    margin-top: 10px;
+}
+
+
+
+
+.right p{
+    margin-inline:22px ;
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+
+.right button{
+    margin-inline: 22px;
+    width: 80px;
+    height: 27px;
+    border: none;
+    border-radius: 2px;
+    margin-top: 10px;
+    color: black;
+}
+
+.right button a{
+  color: black; !important
+}
+
+#menuToggle
+{
+  display: block;
+  position: absolute;
+  
+  right: 50px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+  margin-top: 10px;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: var(--secondary-text);
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  /* transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease; */
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: var(--secondary-text);
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  opacity: 1;
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 280px;
+  height: 4000px;
+  margin: -100px 0 0 0;
+  padding: 50px;
+  padding-top: 125px;
+  right: -100px;
+  
+  background: var(--primary-bg);
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+  color: var(--secondary-text);
+  text-decoration: underline whitesmoke;
+}
+
+#menu li:hover{
+    color: var(--primary-text);
+    text-decoration: underline gold;
+}
+
+/*
+ * And let's fade it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+  opacity: 1;
+}
+
+
+
+
+
+/* 2 nav */
+
+.sec-nav{
+    display: flex;
+    
+    /* justify-content: space-around; */
+    padding: 10px;
+    background-color: var(--secondary-bg);
+    color: white;
+}
+
+.sec-nav .s-left{
+    display: flex;
+    padding-left: 170px;
+    
+}
+
+.sec-nav .s-left a{
+  color: var(--secondary-text);
+  text-decoration: none;
+  margin-inline: 15px;
+}
+
+.sec-nav .s-left a:hover{
+  color: var(--primary-text);
+}
+
+.sec-nav .s-right{
+    display: flex;
+    padding-left: 530px;
+}
+
+.sec-nav .s-right a{
+  color: var(--secondary-text);
+  text-decoration: none;
+  margin-inline: 15px;
+}
+
+.sec-nav .s-right a:hover{
+  color: var(--primary-text);
+}
+
+.sec-nav p:hover{
+    color: var(--primary-text);
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+sec-nav p:hover{
+  color: var(--primary-text);
+}
+
+.s-left p{
+    margin-inline: 15px;
+}
+
+.s-right p{
+    margin-inline: 15px;
+}
+
+
+
+/* footer */
+
+
+footer {
+	display: flex;
+	background-color: var(--secondary-bg);
+
+	
+	padding: 20px 5px;
+	margin-top: 20px;
+}
+
+footer section {
+	flex-grow: 1;
+	width: 33%;
+	padding: 20px 40px;
+	margin: 20px;
+}
+
+h1{
+  color: aliceblue;
+}
+
+/* 1 */
+footer section.company {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+footer section.company {
+	margin-bottom: 30px;
+}
+
+
+
+footer section.company p {
+	margin-bottom: 10px;
+  color: aliceblue;
+}
+
+footer section.company p:hover{
+	color: var(--primary-text);
+	text-decoration: underline var(--primary-text);
+
+	
+}
+
+/* 2 */
+footer section.movies {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+footer section.movies {
+	margin-bottom: 30px;
+}
+
+
+
+footer section.movies p {
+	margin-bottom: 10px;
+  color: aliceblue;
+
+}
+
+footer section.movies p:hover{
+	color: var(--primary-text);
+	text-decoration: underline var(--primary-text);
+
+}
+
+/* 3 */
+footer section.prog {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+footer section.prog {
+	margin-bottom: 30px;
+}
+
+footer section.prog p {
+	margin-bottom: 10px;
+  color: aliceblue;
+
+}
+
+footer section.prog p:hover{
+	color: var(--primary-text);
+	text-decoration: underline var(--primary-text);
+
+}
+
+/* 4 */
+footer section.more {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+footer section.more {
+	margin-bottom: 30px;
+}
+
+footer section.more p {
+	margin-bottom: 10px;
+  color: aliceblue;
+
+}
+
+footer section.more p:hover{
+	color: var(--primary-text);
+	text-decoration: underline var(--primary-text);
+}

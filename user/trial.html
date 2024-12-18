@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket and Food Counter</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+	body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#booking-form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.ticket, .food {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select, input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#total {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+	</style>
+</head>
+<body>
+    <h1>Movie Ticket and Food Counter</h1>
+    <form id="booking-form">
+        <div class="ticket">
+            <h2>Movie Ticket</h2>
+            <label for="movie">Select a Movie:</label>
+            <select id="movie" name="movie">
+                <option value="10">Movie A ($10)</option>
+                <option value="15">Movie B ($15)</option>
+                <option value="12">Movie C ($12)</option>
+            </select>
+            <label for="tickets">Number of Tickets:</label>
+            <input type="number" id="tickets" name="tickets" min="1">
+            <label for="seating">Seating Type:</label>
+            <select id="seating" name="seating">
+                <option value="standard">Standard</option>
+                <option value="premium">Premium (+$5)</option>
+            </select>
+			<label for="location">Where to see:</label>
+
+            <select id="location">
+                <option value="first">Asha Theater</option>
+                <option value="second">Mahesh Theater</option>
+                <option value="third">Konihoor Mall </option>
+
+            </select>
+        </div>
+        <div class="food">
+            <h2>Food Counter</h2>
+            <label for="popcorn">Popcorn ($5 each):</label>
+            <input type="number" id="popcorn" name="popcorn" min="0">
+            <label for="sodas">Sodas ($3 each):</label>
+            <input type="number" id="sodas" name="sodas" min="0">
+        </div>
+        <button type="button" id="calculate">Calculate Total</button>
+        <div id="total">Total Cost: $0</div>
+    </form>
+    <script>
+	document.addEventListener("DOMContentLoaded", function() {
+    const bookingForm = document.getElementById("booking-form");
+    const calculateButton = document.getElementById("calculate");
+    const totalOutput = document.getElementById("total");
+
+    calculateButton.addEventListener("click", function() {
+        const formData = new FormData(bookingForm);
+
+        const moviePrice = parseFloat(formData.get("movie"));
+        const ticketCount = parseInt(formData.get("tickets"));
+        const popcornCount = parseInt(formData.get("popcorn"));
+        const sodaCount = parseInt(formData.get("sodas"));
+        const seatingType = formData.get("seating");
+
+        let totalCost = moviePrice * ticketCount;
+        totalCost += (popcornCount * 5) + (sodaCount * 3);
+
+        if (seatingType === "premium") {
+            totalCost += 5 * ticketCount;
+        }
+
+        totalOutput.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+    });
+});
+
+	</script>
+</body>
+</html>
